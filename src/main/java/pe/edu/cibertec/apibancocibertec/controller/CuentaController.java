@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping("/api/v1/cuenta")
 public class CuentaController {
     private final ICuentaService cuentaService;
-
+    //localhost:8080/api/v1/cuenta/transaccion
     @PostMapping("/transaccion")
     public ResponseEntity<String> transaccion(
             @RequestBody TransferenciaDto transferenciaDto) {
@@ -34,7 +34,7 @@ public class CuentaController {
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    //localhost:8080/api/v1/cuenta
     @GetMapping()
     public ResponseEntity<List<CuentaDto>> getCuenta() {
         return new ResponseEntity<>(
