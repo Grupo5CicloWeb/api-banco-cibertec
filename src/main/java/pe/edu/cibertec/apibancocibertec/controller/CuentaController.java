@@ -3,6 +3,7 @@ package pe.edu.cibertec.apibancocibertec.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.cibertec.apibancocibertec.dto.CuentaDto;
@@ -12,6 +13,7 @@ import pe.edu.cibertec.apibancocibertec.service.ICuentaService;
 import java.util.List;
 /*@CrossOrigin(origins = {"http://frontbancociber.com"},
 methods = {RequestMethod.GET, RequestMethod.POST})*/
+@PreAuthorize("hasRole('ADMIN')")
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/api/v1/cuenta")
