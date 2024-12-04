@@ -23,7 +23,7 @@ public class FiltroJWTAuthorization extends OncePerRequestFilter {
         try{
             if(utilizaToken(request)){
                 Claims claims = validateToken(request);
-                if(claims.get("authorities") != null){
+                if(claims.get("Authorities") != null){
                     cargarAutorizaciones(claims);
                 }else{
                     SecurityContextHolder.clearContext();
@@ -39,7 +39,7 @@ public class FiltroJWTAuthorization extends OncePerRequestFilter {
     }
 
     private void cargarAutorizaciones(Claims claims){
-        List<String> autorizaciones = (List<String>) claims.get("autorizaciones");
+        List<String> autorizaciones = (List<String>) claims.get("Authorities");
         UsernamePasswordAuthenticationToken authenticationToken
                 = new UsernamePasswordAuthenticationToken(
                         claims.getSubject(),
@@ -58,7 +58,7 @@ public class FiltroJWTAuthorization extends OncePerRequestFilter {
 
     private boolean utilizaToken(HttpServletRequest request) {
         String token = request.getHeader("Authorization");
-        if (token == null && !token.startsWith("Bearer ")) {
+        if (token == null || !token.startsWith("Bearer ")) {
             return false;
         }
         return true;
