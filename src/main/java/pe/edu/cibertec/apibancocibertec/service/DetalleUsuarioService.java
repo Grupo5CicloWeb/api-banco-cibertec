@@ -32,7 +32,6 @@ public class DetalleUsuarioService implements UserDetailsService {
         }
         return authorities;
     }
-
     private UserDetails getUserDetails(Usuario usuario,
                                        List<GrantedAuthority> authorities) {
         return new User(
